@@ -14,7 +14,7 @@ export class AppComponent {
       .then(
         (result) => console.log('Has permission?', result.hasPermission),
         (err) => {
-          console.log(err);
+          console.log({err});
           this.androidPermissions.requestPermission(
             this.androidPermissions.PERMISSION.CAMERA
           );
