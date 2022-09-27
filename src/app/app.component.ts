@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
+  constructor(private androidPermissions: AndroidPermissions) {
+    // request Camera permissions on android
+    this.androidPermissions
+      .checkPermission(this.androidPermissions.PERMISSION.CAMERA)
+      .then(
+        (result) => console.log('Has permission?', result.hasPermission),
+        (err) =>
+          this.androidPermissions.requestPermission(
+            this.androidPermissions.PERMISSION.CAMERA
+          )
+      );
+
+    this.androidPermissions.requestPermissions([
+      this.androidPermissions.PERMISSION.CAMERA,
+      this.androidPermissions.PERMISSION.GET_ACCOUNTS,
+    ]);
+
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const IDWise = (window as any).IDWise;
 
@@ -15,7 +32,7 @@ export class AppComponent {
       locale: 'en',
     })
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      .then(idwise => {
+      .then((idwise) => {
         console.log({ idwise });
         idwise.startJourney({
           mount: '#idwise-mount',
