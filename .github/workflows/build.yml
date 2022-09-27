@@ -32,8 +32,8 @@ jobs:
       - name: build the app
         run: npm run build
 
-      - name: remove existing folder if there 
-        run: rm -rf -- /home/runner/work/websdk-ionic-sample/websdk-ionic-sample/android
+      - name: copy changes 
+        run: ionic cap copy
 
       - name: Add to android
         run: npx cap add android
