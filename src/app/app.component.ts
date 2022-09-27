@@ -13,16 +13,13 @@ export class AppComponent {
       .checkPermission(this.androidPermissions.PERMISSION.CAMERA)
       .then(
         (result) => console.log('Has permission?', result.hasPermission),
-        (err) =>
+        (err) => {
+          console.log(err);
           this.androidPermissions.requestPermission(
             this.androidPermissions.PERMISSION.CAMERA
-          )
+          );
+        }
       );
-
-    this.androidPermissions.requestPermissions([
-      this.androidPermissions.PERMISSION.CAMERA,
-      this.androidPermissions.PERMISSION.GET_ACCOUNTS,
-    ]);
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const IDWise = (window as any).IDWise;
@@ -33,7 +30,6 @@ export class AppComponent {
     })
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .then((idwise) => {
-        console.log({ idwise });
         idwise.startJourney({
           mount: '#idwise-mount',
           journeyTemplateId: 'test-remotepass-journey', // journey definition id
