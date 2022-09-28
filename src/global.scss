@@ -26,6 +26,6 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 body {
-  margin-top: env(safe-area-inset-top) !important;
-  margin-top: constant(safe-area-inset-top) !important;
+  padding-top: env(safe-area-inset-top) !important;
+  padding-top: constant(safe-area-inset-top) !important;
 }
