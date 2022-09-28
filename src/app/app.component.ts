@@ -23,17 +23,19 @@ export class AppComponent {
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const IDWise = (window as any).IDWise;
+    const journeyId = 'web-demo';
+    const customerId = 'heskol-prod';
 
     IDWise.initialize({
-      businessId: 'test-remotepass-journey', // this is the same as journey definition id
+      businessId: journeyId, // this is the same as journey definition id
       locale: 'en',
     })
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .then((idwise) => {
         idwise.startJourney({
           mount: '#idwise-mount',
-          journeyTemplateId: 'test-remotepass-journey', // journey definition id
-          userId: 'verify-websdk-test', // An identifier that uniquely idenfies the user carrying out this journey
+          journeyTemplateId: journeyId, // journey definition id
+          userId: customerId, // An identifier that uniquely identifies the user carrying out this journey
           eventHandlers: {
             // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
             onFinished(details) {
