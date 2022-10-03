@@ -10,7 +10,9 @@
     "e2e": "ng e2e",
     "ios:open": "ionic capacitor open ios",
     "ios:add": "ionic capacitor add ios",
-    "ios:sync": "ionic cap sync"
+    "android:open": "ionic capacitor open android",
+    "android:add": "ionic capacitor add android",
+    "cap:sync": "ionic cap sync"
   },
   "private": true,
   "dependencies": {
